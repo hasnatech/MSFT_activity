@@ -233,4 +233,35 @@ div.overlay-blue {
           transform: rotate(135deg);
   right: 0;
 }
+
+.arrow.next.blink {
+  -webkit-animation: blink 1s linear infinite;
+          animation: blink 1s linear infinite;
+}
+
+@-webkit-keyframes blink {
+  0%, 100% {
+    -webkit-transform: rotate(135deg) scale(0.8);
+            transform: rotate(135deg) scale(0.8);
+  }
+  50% {
+    -webkit-transform: rotate(135deg) scale(1);
+            transform: rotate(135deg) scale(1);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    -webkit-transform: rotate(135deg) scale(0.8);
+            transform: rotate(135deg) scale(0.8);
+  }
+  50% {
+    -webkit-transform: rotate(135deg) scale(1);
+            transform: rotate(135deg) scale(1);
+  }
+}
+
+#audio_player {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */

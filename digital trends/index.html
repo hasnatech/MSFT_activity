@@ -18,11 +18,13 @@
             </div>
         </div>
     </div>
+    <audio id="audio_player" src="" controls></audio>
     <section class="sec">
             <p>{{text.instruction}}</p>
         <div class="slider">
             <div class="slider-wrapper flex">
-                <div class="slide flex" ng-repeat="item in text.interactivity">
+                <div class="slide flex disabled" ng-repeat="item in text.interactivity"
+                    data-audio="{{item.audio}}">
                     <div class="slide-image slider-link next"><img src="{{item.image}}">
                         <div class="overlay"></div>
                     </div>
