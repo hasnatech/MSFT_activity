@@ -10,13 +10,24 @@
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl">
+
+    <div class="load-wrapp">
+        <div class="load">
+            <div class="spinner">
+                <div class="bubble-1"></div>
+                <div class="bubble-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio_player" src="" controls></audio>
     <section class="sec">
         <div class="init_padding">
             <p ng-repeat="item in text.t">{{item}}</p>
             <div class="row">
                 <div class="col" ng-repeat="item in text.interactivity">
                     <div class="card-container animate">
-                        <div class="card">
+                        <div class="card" data-audio="{{item.audio}}">
                             <div class="side top">
                                 <div class="title">
                                     {{item.text}}

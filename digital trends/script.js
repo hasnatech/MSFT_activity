@@ -37,7 +37,7 @@ app.filter('safeHtml', function ($sce) {
   $(document).ready(function () {
 
 
-    setInterval(function () {
+    setTimeout(function () {
       $(".load-wrapp").hide();
     }, 3000);
 

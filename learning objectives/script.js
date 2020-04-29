@@ -3,20 +3,25 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function ($scope) {
     $scope.text = {
         "t": ["Click the image to learn more."],
+        "audio": "audio/intro.mp3",
         "interactivity": [{
             "text": "Know",
+            "audio": "audio/audio_1.mp3",
             "image": "image/flip_1.jpg",
             "reveal": "<ul><li>You will know government accelerators to help your customers in planning</li><li>Lead conversations with understanding</li><li>Focus on end-to end (diag and then solve) Convey, seek to be understood)</li><li>Know key customer stories</li><li>Knowing stories make you more credible</li></ul>"
         }, {
             "text": "Understand",
+            "audio": "audio/placeholder.mp3",
             "image": "image/flip_2.jpg",
             "reveal": "<ul><li>Demonstrate knowledge of the industry solution and how it has changed over the years and how to tailor to your customers specific needs/pain points</li><li>Orchestration of the past > present > future and offerings</li></ul>"
         }, {
             "text": "Do differently",
+            "audio": "audio/placeholder.mp3",
             "image": "image/flip_3.jpg",
             "reveal": "<ul><li>Understand your customer</li><li>Understand your market</li><li>Understand and be able to articulate your account plan and how it fits into the 3 horizon vision</li></ul>"
         }]
     }
+
 });
 
 
@@ -24,17 +29,29 @@ app.filter('safeHtml', function ($sce) {
     return function (val) {
         return $sce.trustAsHtml(val);
     };
-  });
+});
 
 $().ready(function () {
+    var audioElement = document.getElementById('audio_player');
+    setTimeout(function () {
+        $(".load-wrapp").hide();
+        audioElement.setAttribute('src', "audio/intro.mp3");
+        audioElement.play();
+    }, 3000);
 
     $(".bottom_nav").fadeOut();
     if (GetIEVersion() > 0) {
         $(".card .back").css("transform", "none");
         $(".card .back").hide();
     }
-
+    $(".card").each(function () {
+        $(this).addClass("disabled");
+    })
+    $(".col").eq(0).find(".card").removeClass("disabled");
     $(".card").click(function () {
+        if ($(this).hasClass("disabled")) {
+            return;
+        }
         if (GetIEVersion() > 0) {
             $(".card .top").show();
             $(".card .back").hide();
@@ -45,20 +62,18 @@ $().ready(function () {
         } else {
             $(".card").removeClass("active");
             $(this).addClass("active");
+
         }
+        var next_id = $(this).parent().parent().index();
+        audioElement.setAttribute('src', $(this).attr("data-audio"));
+        audioElement.addEventListener('ended', function () {
+            console.log(next_id + 1, $(".col").eq(next_id + 1));
+            $(".col").eq(next_id + 1).find(".card").removeClass("disabled");
+        }, false);
+        audioElement.play();
 
         $(this).data("clicked", true);
-        /*var finish_count = 0;
-        $(".card").each(function () {
-            if ($(this).data("clicked") == true) {
-                finish_count++;
-            }
-            if (finish_count == $(".card").length && next_appears == false) {
-                appear($(".bottom_nav"), 1000);
-                next_appears = true;
-                //pageCompleted($(".sec").data("current"));
-            }
-        });*/
+
     });
 });
 
