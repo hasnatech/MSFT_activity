@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flipcard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div class="load-wrapp">
+        <div class="load">
+            <div class="spinner">
+                <div class="bubble-1"></div>
+                <div class="bubble-2"></div>
+            </div>
+        </div>
+    </div>
+    <section class="sec">
+            <p>{{text.instruction}}</p>
+        <div class="slider">
+            <div class="slider-wrapper flex">
+                <div class="slide flex" ng-repeat="item in text.interactivity">
+                    <div class="slide-image slider-link next"><img src="{{item.image}}">
+                        <div class="overlay"></div>
+                    </div>
+                    <div class="slide-content">
+                        <!-- <div class="slide-date">30.10.2017.</div> -->
+                        <div class="slide-title">{{item.title}}</div>
+                        <div class="slide-text" ng-bind-html="item.reveal | safeHtml"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="arrows">
+                <a href="#" title="Previous" class="arrow slider-link prev"></a>
+                <a href="#" title="Next" class="arrow slider-link next"></a>
+            </div>
+        </div>
+    </section>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/angular.min.js"></script>
+    <!-- <script src="js/TweenLite.min.js"></script> -->
+    <script src="js/TweenMax.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

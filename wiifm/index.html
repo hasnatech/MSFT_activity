@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Slider</title>
+    <link rel="stylesheet" href="style.css">    
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl"> 
+    <section class="sec">
+        <div class="container_full">
+            <div class="init_padding ">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="animate">
+                            <h1>Visionary Conversations</h1>
+                            <p ng-repeat="item in text.t">{{item}}</p>
+                            <div class="sequence">
+                                <div class="row1">
+                                    <div class="head">
+                                        <img src="image/plus.png" class="float_right" alt="">
+                                    </div>
+                                    <div class="nav_button">
+                                        <button class="next">
+                                            <img src="image/right.png" alt="previous">
+                                        </button>
+                                        <button class="prev">
+                                            <img src="image/left.png" alt="next">
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <div class="sequence_img" ng-repeat="item in text.interactivity">
+                                            <img ng-src="{{item.image}}" alt="{{item.reveal}}">
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+
+                                </div>
+                                <div class="row2">
+                                    <div class="sequence_text" ng-repeat="item in text.interactivity">
+                                        <div class="padding-20">
+                                                <p>{{item.reveal}}</p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="leftIndicator">
+                                
+                                    <div class="circle-indicator">
+                                        <div class="circle default" ng-repeat="item in text.interactivity"></div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

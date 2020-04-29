@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flipcard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <section class="sec">
+        <div class="init_padding">
+            <p ng-repeat="item in text.t">{{item}}</p>
+            <div class="row">
+                <div class="col" ng-repeat="item in text.interactivity">
+                    <div class="card-container animate">
+                        <div class="card">
+                            <div class="side top">
+                                <div class="title">
+                                    {{item.text}}
+                                </div>
+                                <img ng-src="{{item.image}}" alt="{{item.reveal}}">
+                            </div>
+                            <div class="side back">
+                                <div class="content">
+                                    <div class="title">
+                                        {{item.text}}
+                                    </div>
+                                    <div class="text" ng-bind-html="item.reveal | safeHtml">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
