@@ -19,6 +19,11 @@
             </div>
         </div>
     </div>
+    <div class="play_btn">
+        <div class="play_panel">
+            <div class="play"><img src="../images/play.png" alt=""></div>
+        </div>
+    </div>
     <audio id="audio_player" src="" controls></audio>
     <section class="sec">
         <div class="container_full">
@@ -28,7 +33,7 @@
                         <div class="animate">
                             <h1>Visionary Conversations</h1>
                             <p ng-repeat="item in text.t">{{item}}</p>
-                            <div class="sequence" >
+                            <div class="sequence">
                                 <div class="row1">
                                     <div class="head">
                                         <img src="image/plus.png" class="float_right" alt="">
@@ -42,7 +47,8 @@
                                         </button>
                                     </div>
                                     <div>
-                                        <div class="sequence_img" ng-repeat="item in text.interactivity" data-audio="{{item.audio}}">
+                                        <div class="sequence_img" ng-repeat="item in text.interactivity"
+                                            data-audio="{{item.audio}}">
                                             <img ng-src="{{item.image}}" alt="{{item.reveal}}">
                                         </div>
                                     </div>

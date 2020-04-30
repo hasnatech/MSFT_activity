@@ -25,7 +25,7 @@ app.controller('myCtrl', function ($scope) {
             "reveal": "Bring in service to tailor where you are to give you more value to purchase additional services that you need to get the best value."
         }]
     }
-});
+}); 
 
 
 
@@ -33,9 +33,12 @@ app.controller('myCtrl', function ($scope) {
 $().ready(function () {
     var completed = false;
     var audioElement = document.getElementById('audio_player');
+    $(".sequence").hide();
+    $(".leftIndicator").hide();
     setTimeout(function () {
         $(".load-wrapp").hide();
-        show(0);
+        $(".play_btn").show();
+        
         //audioElement.setAttribute('src', "audio/placeholder.mp3");
         //audioElement.play();
         /*audioElement.addEventListener('ended', function () {
@@ -43,6 +46,12 @@ $().ready(function () {
         }, false);*/
 
     }, 3000);
+    $(".play_panel").click(function(){
+        show(0);
+        $(".play_panel").hide();
+        $(".sequence").show();
+        $(".leftIndicator").show();
+    });
     var curr = 0;
     var prev = 0;
     var next_appears = false;

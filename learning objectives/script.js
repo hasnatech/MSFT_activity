@@ -23,7 +23,7 @@ app.controller('myCtrl', function ($scope) {
     }
 
 });
-
+ 
 
 app.filter('safeHtml', function ($sce) {
     return function (val) {

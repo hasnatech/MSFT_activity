@@ -11,6 +11,22 @@ body{
     display: none;
 }
 
+.play_btn{
+    display: none;
+}
+.play_panel{
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 100px;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
 
 .bubble-1,
 .bubble-2 {
