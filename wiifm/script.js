@@ -57,9 +57,6 @@ $().ready(function () {
     $(".sequence_img img").hide();
     $(".sequence_text").hide();
 
-
-
-
     $(".circle-indicator").width($(".sequence_img").length * 20);
     //showNext(default_delay);
 
