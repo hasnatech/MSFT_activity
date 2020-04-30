@@ -151,6 +151,7 @@ h1{
     /* background-color: #bf6363; */
     height: 100%;
     width: 100%;
+    
     z-index: 101;
 }
 
@@ -158,6 +159,7 @@ h1{
     top: 45%;
     right: 0px;
     position: absolute;
+    cursor: pointer;
 }
 
 .sequence .nav_button .prev {
@@ -165,6 +167,7 @@ h1{
     left: 0px;
     position: absolute;
     z-index: 102;
+    cursor: pointer;
     /* background-color: #d41a1a; */
 }
 

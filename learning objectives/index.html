@@ -25,7 +25,7 @@
         <div class="init_padding">
             <p ng-repeat="item in text.t">{{item}}</p>
             <div class="row">
-                <div class="col" ng-repeat="item in text.interactivity">
+                <div class="col" ng-repeat="item in text.interactivity" tabindex="{{$index + 1 }}">
                     <div class="card-container animate">
                         <div class="card" data-audio="{{item.audio}}">
                             <div class="side top">

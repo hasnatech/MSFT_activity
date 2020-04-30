@@ -23,7 +23,7 @@ app.controller('myCtrl', function ($scope) {
     }
 
 });
- 
+  
 
 app.filter('safeHtml', function ($sce) {
     return function (val) {
@@ -44,11 +44,17 @@ $().ready(function () {
         $(".card .back").css("transform", "none");
         $(".card .back").hide();
     }
-    $(".card").each(function () {
+    $(".card").each(function ($index) {
         $(this).addClass("disabled");
+        //$(this).attr("tabIndex", $index);
     })
+    $(".col").bind("keypress", handleClickAndPress(function (e) {
+        console.log($(e), $(this));
+        $(e.target).find(".card").click();
+    }))
     $(".col").eq(0).find(".card").removeClass("disabled");
     $(".card").click(function () {
+        console.log("clicked", $(this));
         if ($(this).hasClass("disabled")) {
             return;
         }
@@ -76,7 +82,13 @@ $().ready(function () {
 
     });
 });
-
+function handleClickAndPress(myfunc) {
+    return function (e) {
+        if (e.type != "keypress" || e.keyCode == 13) {
+            myfunc(e);
+        }
+    };
+}
 function GetIEVersion() {
     var sAgent = window.navigator.userAgent;
     var Idx = sAgent.indexOf("MSIE");

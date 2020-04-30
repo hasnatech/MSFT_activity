@@ -76,7 +76,7 @@ body {
     perspective: 600;
     position: relative;
     width: 100%;
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
 #audio_player {
@@ -152,10 +152,14 @@ body {
     .col {
         flex: 1;
         margin: 1rem;
+
+        &:focus {
+            outline: #FFEB3B solid 3px;
+        }
     }
 }
 
-.sec{
+.sec {
     margin: 0 1.8rem;
     max-width: 1280px;
 }
