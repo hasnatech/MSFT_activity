@@ -2,7 +2,7 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function ($scope) {
   $scope.text = {
-    "instruction": "Click through next and back arrow to know more.",
+    "instruction": "Click play to start the audio and click through next and back arrow to know more.",
     "interactivity": [{
       "date": "24.04.2020.",
       "title": "Citizen Services",
@@ -43,9 +43,25 @@ app.filter('safeHtml', function ($sce) {
 
     setTimeout(function () {
       $(".load-wrapp").hide();
-      audioElement.setAttribute('src', "audio/placeholder.mp3");
-      audioElement.play();
+      $(".play_btn").show();
+      //audioElement.setAttribute('src', "audio/placeholder.mp3");
+      //audioElement.play();
     }, 3000);
+
+    $(".play_panel").click(function(){
+      //audioElement.setAttribute('src', "audio/placeholder.mp3");
+      //audioElement.play(); 
+      $(".play_panel").hide();
+
+      var audio = $(".slide").eq(1).attr("data-audio");
+      audioElement.setAttribute('src', audio);
+      audioElement.addEventListener('ended', function () {
+          $('.arrow.next').show();
+          $('.arrow.next').addClass("blink");
+      }, false);
+      audioElement.play();
+    })
+    
 
     audioElement.addEventListener('ended', function () {
       console.log("start",clickCount,$(".slide").length, clickCount != $(".slide").length - 1);

@@ -20,11 +20,15 @@
     </div>
     <audio id="audio_player" src="" controls></audio>
     <section class="sec">
-            <p>{{text.instruction}}</p>
+        <p>{{text.instruction}}</p>
+        <div class="play_btn">
+            <div class="play_panel">
+                <div class="play"><img src="../images/play.png" alt=""></div>
+            </div>
+        </div>
         <div class="slider">
             <div class="slider-wrapper flex">
-                <div class="slide flex disabled" ng-repeat="item in text.interactivity"
-                    data-audio="{{item.audio}}">
+                <div class="slide flex disabled" ng-repeat="item in text.interactivity" data-audio="{{item.audio}}">
                     <div class="slide-image"><img src="{{item.image}}">
                         <div class="overlay"></div>
                     </div>
