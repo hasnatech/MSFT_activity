@@ -69,7 +69,10 @@ body {background-color: $dark_brand;}
     align-items: center;
     z-index: 2;
 }
-
+.slider-link:focus,
+.play:focus{
+    outline: #FFEB3B solid 3px;
+}
 
 .sec{padding: 1.8rem}
 .flex { display: -webkit-flex; display: flex; -webkit-flex-direction: row;  flex-direction: row; -webkit-justify-content: flex-start; justify-content: flex-start;}

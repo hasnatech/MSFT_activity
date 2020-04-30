@@ -118,6 +118,11 @@ body {
   z-index: 2;
 }
 
+.slider-link:focus,
+.play:focus {
+  outline: #FFEB3B solid 3px;
+}
+
 .sec {
   padding: 1.8rem;
 }

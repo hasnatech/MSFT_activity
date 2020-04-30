@@ -25,7 +25,7 @@ app.controller('myCtrl', function ($scope) {
             "reveal": "Bring in service to tailor where you are to give you more value to purchase additional services that you need to get the best value."
         }]
     }
-}); 
+});
 
 
 
@@ -38,20 +38,17 @@ $().ready(function () {
     setTimeout(function () {
         $(".load-wrapp").hide();
         $(".play_btn").show();
-        
-        //audioElement.setAttribute('src', "audio/placeholder.mp3");
-        //audioElement.play();
-        /*audioElement.addEventListener('ended', function () {
-            
-        }, false);*/
-
     }, 3000);
-    $(".play_panel").click(function(){
-        show(0);
-        $(".play_panel").hide();
-        $(".sequence").show();
-        $(".leftIndicator").show();
+    $(".play_panel").click(function () {
+        clickPlay();
     });
+    $(".play").bind("keypress", handleClickAndPress(function (e) {
+        console.log($(e), $(this));
+        if (e.keyCode == 13) {
+            clickPlay();
+        }
+    }));
+
     var curr = 0;
     var prev = 0;
     var next_appears = false;
@@ -68,7 +65,12 @@ $().ready(function () {
 
     $(".circle-indicator").width($(".sequence_img").length * 20);
     //showNext(default_delay);
-
+    function clickPlay() {
+        show(0);
+        $(".play_panel").hide();
+        $(".sequence").show();
+        $(".leftIndicator").show();
+    }
     function show(v, prevAnim, nextAnim) {
         $(".nav_button .next").show();
         $(".nav_button .prev").show();
@@ -149,6 +151,12 @@ $().ready(function () {
 
         //}
     });
-
+    function handleClickAndPress(myfunc) {
+        return function (e) {
+            if (e.type != "keypress" || e.keyCode == 13) {
+                myfunc(e);
+            }
+        };
+    }
 
 });

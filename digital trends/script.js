@@ -48,7 +48,18 @@ app.filter('safeHtml', function ($sce) {
       //audioElement.play();
     }, 3000);
 
-    $(".play_panel").click(function(){
+    $(".play_panel").click(function () {
+      clickPlay();
+    })
+
+    $(".play").bind("keypress", handleClickAndPress(function (e) {
+      console.log($(e), $(this));
+      if (e.keyCode == 13) {
+        clickPlay();
+      }
+    }));
+
+    function clickPlay() {
       //audioElement.setAttribute('src', "audio/placeholder.mp3");
       //audioElement.play(); 
       $(".play_panel").hide();
@@ -56,15 +67,20 @@ app.filter('safeHtml', function ($sce) {
       var audio = $(".slide").eq(1).attr("data-audio");
       audioElement.setAttribute('src', audio);
       audioElement.addEventListener('ended', function () {
-          $('.arrow.next').show();
-          $('.arrow.next').addClass("blink");
+        $('.arrow.next').show();
+        $('.arrow.next').addClass("blink");
       }, false);
       audioElement.play();
-    })
-    
-
+    }
+    function handleClickAndPress(myfunc) {
+      return function (e) {
+        if (e.type != "keypress" || e.keyCode == 13) {
+          myfunc(e);
+        }
+      };
+    }
     audioElement.addEventListener('ended', function () {
-      console.log("start",clickCount,$(".slide").length, clickCount != $(".slide").length - 1);
+      console.log("start", clickCount, $(".slide").length, clickCount != $(".slide").length - 1);
       if (clickCount != $(".slide").length - 1) {
         $('.arrow.next').show();
         $('.arrow.next').addClass("blink");
@@ -94,7 +110,7 @@ app.filter('safeHtml', function ($sce) {
     btn.on('click', function (e) {
       e.preventDefault();
       $('.arrow.prev').show();
-      
+
       $('.arrow.next').removeClass("blink");
 
       if ($(this).hasClass('next')) {
@@ -106,20 +122,20 @@ app.filter('safeHtml', function ($sce) {
       if (clickCount == 0) {
         $('.arrow.prev').hide();
       }
-      if(show_next == true && clickCount < $(".slide").length-1){
+      if (show_next == true && clickCount < $(".slide").length - 1) {
         $('.arrow.next').show();
-      }else{
+      } else {
         $('.arrow.next').hide();
       }
       var audio = $(".slide").eq(clickCount).attr("data-audio");
       audioElement.setAttribute('src', audio);
       audioElement.addEventListener('ended', function () {
-        console.log(clickCount,$(".slide").length, clickCount != $(".slide").length - 1);
+        console.log(clickCount, $(".slide").length, clickCount != $(".slide").length - 1);
         if (clickCount != $(".slide").length - 1) {
           $('.arrow.next').show();
-          if(show_next != true)
-              $('.arrow.next').addClass("blink");
-        }else{
+          if (show_next != true)
+            $('.arrow.next').addClass("blink");
+        } else {
           show_next = true;
         }
         // $(".col").eq(next_id + 1).find(".card").removeClass("disabled");

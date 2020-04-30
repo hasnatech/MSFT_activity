@@ -217,6 +217,15 @@ h1 {
   height: 40px;
 }
 
+.sequence .nav_button .prev:focus,
+.sequence .nav_button .next:focus {
+  outline: #FFEB3B solid 3px;
+}
+
+.play:focus {
+  outline: #FFEB3B solid 3px;
+}
+
 .circle {
   width: 8px;
   height: 8px;

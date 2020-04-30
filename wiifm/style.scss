@@ -180,6 +180,13 @@ h1{
     font-size: 20px;
     width: 40px;
     height: 40px;
+    &:focus{
+        outline: #FFEB3B solid 3px;
+    }
+}
+
+.play:focus{
+    outline: #FFEB3B solid 3px;
 }
 
 .circle {
