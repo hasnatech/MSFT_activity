@@ -2,7 +2,7 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function ($scope) {
     $scope.text = {
-        "t": ["Click the next / previous arrow  to learn more."],
+        "t": ["Click  play button to play audio and click the next / previous arrow  to learn more."],
         "interactivity": [{
             "text": "",
             "image": "image/flip_1.jpg",
