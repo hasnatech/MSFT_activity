@@ -37,7 +37,7 @@ $().ready(function () {
         $(".load-wrapp").hide();
         audioElement.setAttribute('src', "audio/intro.mp3");
         audioElement.play();
-    }, 3000);
+    }, 3000); 
 
     $(".bottom_nav").fadeOut();
     if (GetIEVersion() > 0) {

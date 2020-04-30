@@ -5,6 +5,71 @@ body{
     font-size: 18px;
     overflow: hidden;
 }
+
+
+#audio_player {
+    display: none;
+}
+
+
+.bubble-1,
+.bubble-2 {
+    position: absolute;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: $brand;
+}
+
+.bubble-2 {
+    top: auto;
+    bottom: 0;
+}
+
+.load-wrapp {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.load {
+    width: 100px;
+    height: 100px;
+}
+
+.load .spinner {
+    animation: loadingI 2s linear infinite;
+}
+
+.load .bubble-1,
+.load .bubble-2 {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.load .bubble-2 {
+    animation-delay: -1.0s;
+}
+
+@keyframes loadingI {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: scale(0.0);
+    }
+
+    50% {
+        transform: scale(1.0);
+    }
+}
 h1{
     font-weight: bold;
     font-size: 25px;

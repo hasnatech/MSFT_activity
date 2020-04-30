@@ -6,10 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Slider</title>
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl"> 
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <div class="load-wrapp">
+        <div class="load">
+            <div class="spinner">
+                <div class="bubble-1"></div>
+                <div class="bubble-2"></div>
+            </div>
+        </div>
+    </div>
+    <audio id="audio_player" src="" controls></audio>
     <section class="sec">
         <div class="container_full">
             <div class="init_padding ">
@@ -18,7 +28,7 @@
                         <div class="animate">
                             <h1>Visionary Conversations</h1>
                             <p ng-repeat="item in text.t">{{item}}</p>
-                            <div class="sequence">
+                            <div class="sequence" >
                                 <div class="row1">
                                     <div class="head">
                                         <img src="image/plus.png" class="float_right" alt="">
@@ -32,7 +42,7 @@
                                         </button>
                                     </div>
                                     <div>
-                                        <div class="sequence_img" ng-repeat="item in text.interactivity">
+                                        <div class="sequence_img" ng-repeat="item in text.interactivity" data-audio="{{item.audio}}">
                                             <img ng-src="{{item.image}}" alt="{{item.reveal}}">
                                         </div>
                                     </div>
@@ -42,19 +52,19 @@
                                 <div class="row2">
                                     <div class="sequence_text" ng-repeat="item in text.interactivity">
                                         <div class="padding-20">
-                                                <p>{{item.reveal}}</p>
+                                            <p>{{item.reveal}}</p>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
                             <div class="clear"></div>
                             <div class="leftIndicator">
-                                
-                                    <div class="circle-indicator">
-                                        <div class="circle default" ng-repeat="item in text.interactivity"></div>
-                                    </div>
-                                
+
+                                <div class="circle-indicator">
+                                    <div class="circle default" ng-repeat="item in text.interactivity"></div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

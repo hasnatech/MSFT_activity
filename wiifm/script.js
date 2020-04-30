@@ -6,18 +6,22 @@ app.controller('myCtrl', function ($scope) {
         "interactivity": [{
             "text": "",
             "image": "image/flip_1.jpg",
+            "audio": "audio/placeholder.mp3",
             "reveal": "Post-COVID, the majority of calls and questions court mod and court hearings--courts had forced virtual justice system."
         }, {
             "text": "",
             "image": "image/flip_2.jpg",
+            "audio": "audio/placeholder.mp3",
             "reveal": "You have been queued up for conversation -- they need DT."
         }, {
             "text": "",
             "image": "image/flip_3.jpg",
+            "audio": "audio/placeholder.mp3",
             "reveal": "Enables you to have very relevant conversations with the customer and provide the correct solution at the correct time, allowing you to make a sell and meet your plan quota."
         }, {
             "text": "",
             "image": "image/flip_4.jpg",
+            "audio": "audio/placeholder.mp3",
             "reveal": "Bring in service to tailor where you are to give you more value to purchase additional services that you need to get the best value."
         }]
     }
@@ -27,7 +31,18 @@ app.controller('myCtrl', function ($scope) {
 
 
 $().ready(function () {
+    var completed = false;
+    var audioElement = document.getElementById('audio_player');
+    setTimeout(function () {
+        $(".load-wrapp").hide();
+        show(0);
+        //audioElement.setAttribute('src', "audio/placeholder.mp3");
+        //audioElement.play();
+        /*audioElement.addEventListener('ended', function () {
+            
+        }, false);*/
 
+    }, 3000);
     var curr = 0;
     var prev = 0;
     var next_appears = false;
@@ -42,7 +57,7 @@ $().ready(function () {
     $(".sequence_img img").hide();
     $(".sequence_text").hide();
 
-    show(0);
+
 
 
     $(".circle-indicator").width($(".sequence_img").length * 20);
@@ -55,9 +70,24 @@ $().ready(function () {
 
         if (curr == 0) {
             $(".nav_button .prev").hide();
+        }
+        if (completed != true) {
+            $(".nav_button .next").hide();
         } else if (v == $(".sequence_img").length - 1) {
             $(".nav_button .next").hide();
         }
+
+
+        var audio = $(".sequence_img").eq(curr).attr("data-audio");
+        audioElement.setAttribute('src', audio);
+        audioElement.addEventListener('ended', function () {
+            $(".nav_button .next").show();
+            if (v == $(".sequence_img").length - 1) {
+                $(".nav_button .next").hide();
+                completed = true;
+            }
+        }, false);
+        audioElement.play();
 
         $(".sequence_img").eq(prev).find("img").hide('slide', {
             direction: prevAnim
