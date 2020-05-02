@@ -32,7 +32,22 @@ app.controller('myCtrl', function ($scope) {
 
 $().ready(function () {
     var completed = false;
+    var volume = 0.8;
     var audioElement = document.getElementById('audio_player');
+    setInterval(function () {
+        var target = window.parent.document.querySelector(".volume-range");
+        var vol = target.value;
+        console.log("vol = ", vol);
+        if (vol != volume * 10) {
+            volume = vol / 10;
+            setVolume(volume)
+        }
+    }, 1000)
+    function setVolume(vol) {
+        console.log("setVolume = ", vol);
+        audioElement.volume = vol;
+    }
+
     $(".sequence").hide();
     $(".leftIndicator").hide();
     setTimeout(function () {

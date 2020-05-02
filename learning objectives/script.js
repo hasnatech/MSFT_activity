@@ -33,11 +33,20 @@ app.filter('safeHtml', function ($sce) {
 
 $().ready(function () {
     var audioElement = document.getElementById('audio_player');
-
+    var volume = 0.8;
     setInterval(function () {
         var target = window.parent.document.querySelector(".volume-range");
-        console.log(target, target.value);
-    }, 3000)
+        var vol = target.value;
+        console.log("vol = ", vol);
+        if (vol != volume * 10) {
+            volume = vol / 10;
+            setVolume(volume)
+        }
+    }, 1000)
+    function setVolume(vol){
+        console.log("setVolume = ", vol);
+        audioElement.volume = vol;
+    }
 
 
     setTimeout(function () {

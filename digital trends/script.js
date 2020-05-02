@@ -40,6 +40,20 @@ app.filter('safeHtml', function ($sce) {
 
   $(document).ready(function () {
     var audioElement = document.getElementById('audio_player');
+    var volume = 0.8;
+    setInterval(function () {
+      var target = window.parent.document.querySelector(".volume-range");
+      var vol = target.value;
+      console.log("vol = ", vol);
+      if (vol != volume * 10) {
+        volume = vol / 10;
+        setVolume(volume)
+      }
+    }, 1000)
+    function setVolume(vol) {
+      console.log("setVolume = ", vol);
+      audioElement.volume = vol;
+    }
 
     setTimeout(function () {
       $(".load-wrapp").hide();
