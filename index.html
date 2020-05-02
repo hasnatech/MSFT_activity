@@ -12,5 +12,16 @@
         <li><a href="learning objectives/index.html">Learning Objective</a></li>
         <li><a href="wiifm/index.html">WIIFM</a></li>
     </ul>
+    <iframe name="myFrame" width="1280px" height="500px" style="border:1px solid #ccc" 
+    src="http://127.0.0.1:8887/learning%20objectives/index.html" allowfullscreen="" class="shown " tabindex="0" aria-hidden="false" data-reactid=".0.0.1.0:$_player=16YSE88ImWso=16aHaIDCditf.0.5:$c1651.1:$c1668.$slideobject1703.0"></iframe>
+
+    <button 
+    onclick="buttonClick()">Click Me</button>
+<script>
+function buttonClick(){
+    console.log( window.frames['myFrame']);
+    document.getElementsByTagName("iframe")[0].contentWindow.postMessage('Hello World!');
+}
+</script>
 </body>
 </html>

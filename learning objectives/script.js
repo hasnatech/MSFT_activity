@@ -104,3 +104,7 @@ function GetIEVersion() {
     else
         return 0; //It is not IE
 }
+window.addEventListener('message', receive);
+function receive(event) {
+    console.log("Received Message : " + event.data);
+}
