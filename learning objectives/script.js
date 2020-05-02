@@ -23,7 +23,7 @@ app.controller('myCtrl', function ($scope) {
     }
 
 });
-  
+
 
 app.filter('safeHtml', function ($sce) {
     return function (val) {
@@ -33,11 +33,18 @@ app.filter('safeHtml', function ($sce) {
 
 $().ready(function () {
     var audioElement = document.getElementById('audio_player');
+
+    setInterval(function () {
+        var target = window.parent.document.querySelector(".volume-range");
+        console.log(target, target.value);
+    }, 3000)
+
+
     setTimeout(function () {
         $(".load-wrapp").hide();
         audioElement.setAttribute('src', "audio/intro.mp3");
         audioElement.play();
-    }, 3000); 
+    }, 3000);
 
     $(".bottom_nav").fadeOut();
     if (GetIEVersion() > 0) {
@@ -108,3 +115,5 @@ window.addEventListener('message', receive);
 function receive(event) {
     console.log("Received Message : " + event.data);
 }
+
+
